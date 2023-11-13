@@ -23,7 +23,7 @@ resource "random_id" "bucket_name_suffix" {
 
 # Create a Cloud Storage bucket
 resource "google_storage_bucket" "default" {
-  name          = "trigger-cloudrun-${data.google_project.project.name}-${random_id.bucket_name_suffix.hex}"
+  name          = "trigger-${random_id.bucket_name_suffix.hex}"
   location      = google_cloud_run_v2_service.default.location
   force_destroy = true
 
