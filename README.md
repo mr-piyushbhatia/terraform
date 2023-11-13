@@ -14,7 +14,7 @@ What this Terraform Code will do?
 
 Commands to be executed >
 
-gcloud auth application-default login
-terraform init
-terraform plan
-terraform apply
+1. gcloud auth application-default login
+2. terraform init
+3. terraform plan
+4. terraform apply
