@@ -22,7 +22,7 @@ For Verification
 1. To confirm the service has been created:
    gcloud run services list --region <project-region>
 2. To confirm the trigger has been created:
-   gloud eventarc triggers list --location <project-region>
+   gcloud eventarc triggers list --location <project-region>
 
 
 Generate and view an event
