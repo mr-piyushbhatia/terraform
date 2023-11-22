@@ -6,8 +6,6 @@
     "start": "functions-framework --target=main --port 8080"
   },
   "dependencies": {
-    "@google-cloud/dataflow": "^3.0.1",
-    "google-auth-library": "^9.2.0",
-    "googleapis": "^128.0.0"
+    "@google-cloud/dataflow": "^3.0.1"
   }
 }
