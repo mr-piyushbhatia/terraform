@@ -1,8 +1,3 @@
-# Create Pub/Sub topic for Eventarc trigger
-resource "google_pubsub_topic" "eventarc_topic" {
-  name = "eventarc-dataflow-topic"
-}
-
 data "archive_file" "this" {
   type        = "zip"
   output_path = "/tmp/trigger.zip"
@@ -15,15 +10,15 @@ resource "google_storage_bucket_object" "this" {
   source = data.archive_file.this.output_path
 }
 
-# Subscribe Cloud Function to the Pub/Sub topic
+# Create a Cloud Function which trigger using Eventarc on Storage Events
 resource "google_cloudfunctions2_function" "this" {
-  name     = "process-storage-event"
+  name     = "cloudfunction-test"
   location = var.region
   project  = var.project_id
 
   build_config {
     runtime     = "nodejs20"
-    entry_point = "processStorageEvent"
+    entry_point = "helloGCS"
 
     source {
       storage_source {
@@ -37,12 +32,12 @@ resource "google_cloudfunctions2_function" "this" {
     min_instance_count    = 1
     max_instance_count    = 3
     timeout_seconds       = 60
-    service_account_email = google_service_account.eventarc_cloudfunction_sa.email
+    service_account_email = google_service_account.cloudfunction_sa.email
   }
 
   event_trigger {
     event_type            = "google.cloud.storage.object.v1.finalized"
-    service_account_email = google_service_account.eventarc_cloudfunction_sa.email
+    service_account_email = google_service_account.cloudfunction_sa.email
     event_filters {
       attribute = "bucket"
       value     = google_storage_bucket.default.name
@@ -53,8 +48,6 @@ resource "google_cloudfunctions2_function" "this" {
   depends_on = [
     google_project_service.cloudfunction,
     google_project_service.cloudbuild,
-    google_project_iam_member.pubsub_publisher,
-    google_pubsub_topic.eventarc_topic
   ]
 
 }

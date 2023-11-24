@@ -16,12 +16,6 @@ resource "google_project_service" "cloudbuild" {
   disable_on_destroy = false
 }
 
-# Enable Cloud Run API
-resource "google_project_service" "run" {
-  service            = "run.googleapis.com"
-  disable_on_destroy = false
-}
-
 # Enable Eventarc API
 resource "google_project_service" "eventarc" {
   service            = "eventarc.googleapis.com"
@@ -34,24 +28,6 @@ resource "google_project_service" "pubsub" {
   disable_on_destroy = false
 }
 
-# Enable Dataflow API
-resource "google_project_service" "dataflow" {
-  service            = "dataflow.googleapis.com"
-  disable_on_destroy = false
-}
-
-# Enable Dataflow API
-resource "google_project_service" "dataflow" {
-  service            = "datapipelines.googleapis.com"
-  disable_on_destroy = false
-}
-
-# Enable Dataflow API
-resource "google_project_service" "dataflow" {
-  service            = "cloudscheduler.googleapis.com"
-  disable_on_destroy = false
-}
-
 # Cloud Storage bucket names must be globally unique
 resource "random_id" "bucket_name_suffix" {
   byte_length = 4
@@ -59,7 +35,7 @@ resource "random_id" "bucket_name_suffix" {
 
 # Create Cloud Storage bucket
 resource "google_storage_bucket" "default" {
-  name          = "eventarc-dataflow-${random_id.bucket_name_suffix.hex}"
+  name          = "cloudfunction-${random_id.bucket_name_suffix.hex}"
   location      = var.region
   force_destroy = true
 

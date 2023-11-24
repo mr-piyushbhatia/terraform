@@ -1,11 +1,11 @@
 {
-  "name": "process-storage-event",
+  "name": "cloudfunction-test",
   "version": "1.0.0",
   "description": "Google Cloud Function terraform example",
   "scripts": {
     "start": "functions-framework --target=main --port 8080"
   },
   "dependencies": {
-    "@google-cloud/dataflow": "^3.0.1"
+    "@google-cloud/functions-framework": "^3.0.0"
   }
 }
