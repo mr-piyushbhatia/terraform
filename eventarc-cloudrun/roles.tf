@@ -18,7 +18,7 @@ resource "google_project_iam_member" "runinvoker" {
   member  = "serviceAccount:${google_service_account.eventarc_service_account.email}"
 }
 
-# Grant the Cloud Storage service account permission to publish pub/sub topics
+# Grant Cloud Storage service account permission to publish pub/sub topics
 data "google_storage_project_service_account" "gcs_account" {}
 resource "google_project_iam_member" "pubsubpublisher" {
   project = data.google_project.project.id

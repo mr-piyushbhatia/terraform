@@ -1,6 +1,6 @@
 # Deploy Cloud Run service
 resource "google_cloud_run_v2_service" "default" {
-  name     = "terra-hello-events"
+  name     = "cloudrun-test"
   location = var.region
 
   template {

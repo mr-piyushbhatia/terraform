@@ -1,4 +1,4 @@
-# Create a service account for Eventarc trigger
+# Create a service account for Eventarc Cloudfunction trigger
 resource "google_service_account" "cloudfunction_sa" {
   account_id   = "cloudfunction-sa"
   display_name = "Cloud Function Service Account"

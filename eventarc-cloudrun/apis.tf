@@ -27,9 +27,9 @@ resource "random_id" "bucket_name_suffix" {
   byte_length = 4
 }
 
-# Create default Cloud Storage bucket
+# Create Cloud Storage bucket
 resource "google_storage_bucket" "default" {
-  name          = "trigger-${random_id.bucket_name_suffix.hex}"
+  name          = "eventarc-cloudrun-${random_id.bucket_name_suffix.hex}"
   location      = var.region
   force_destroy = true
 

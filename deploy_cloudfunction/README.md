@@ -5,10 +5,10 @@ What this Terraform Code will do?
 4. Enable Eventarc API
 5. Enable Pub/Sub API
 6. Create a Cloud Storage bucket
-7. Create a service account for Eventarc-Cloudfunction trigger
-8. Grant eventarc.admin permission to manage Eventarc events
-9. Grant cloudfunctions.invoker permission to invoke Cloud Functions 
-10. Grant pubsub.publisher permission to publish pub/sub topics
+7. Create a service account for Eventarc Cloudfunction trigger
+8. Grant permission to invoke Cloud Function services
+9. Grant permission to receive Eventarc events 
+10. Grant Cloud Storage service account permission to publish pub/sub topics
 11. Create a Cloud Function which trigger using Eventarc on Storage Events
 
 Commands to be executed
