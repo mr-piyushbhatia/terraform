@@ -7,6 +7,6 @@ on: push
 
 jobs:
   build:
-    runs-on: [self-hosted, bolt-Windows]
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
